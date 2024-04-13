@@ -10,33 +10,43 @@ data = pd.read_csv("Houses.csv", encoding='latin2')
 data.drop(columns=['no'], inplace=True)
 data.drop(["latitude", "longitude", "id"], axis='columns')
 
+modeling = True
 
-model = LinearRegression()
-data_encoded = pd.get_dummies(data)
+data2 = data.copy()
+data2['price_per_sq'] = data2['price'] / data2['sq']
+data2.address = data2.address.apply(lambda x: x.strip())
+address_stats = data2.groupby('address')['address'].agg('count').sort_values(ascending=False)
+address_stats_less_than_10 = address_stats[address_stats<=10]
+data2.address = data2.address.apply(lambda x: 'Other' if x in address_stats_less_than_10 else x)
+print(len(data2.address.unique()))
+print(data2.head(10))
+if modeling:
+    model = LinearRegression()
+    data_encoded = pd.get_dummies(data2)
 
-X = data_encoded.drop(columns=['price'])
-y = data_encoded['price']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X = data_encoded.drop(columns=['price'])
+    y = data_encoded['price']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-model.fit(X_train, y_train)
+    model.fit(X_train, y_train)
 
-y_pred = model.predict(X_test)
+    y_pred = model.predict(X_test)
 
-mse = mean_squared_error(y_test, y_pred)
-mae = mean_absolute_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
+    mse = mean_squared_error(y_test, y_pred)
+    mae = mean_absolute_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
 
-print("Błąd średniokwadratowy (MSE):", mse)
-print("Średni błąd bezwzględny (MAE):", mae)
-print("Współczynnik determinacji (R^2):", r2)
+    print("Błąd średniokwadratowy (MSE):", mse)
+    print("Średni błąd bezwzględny (MAE):", mae)
+    print("Współczynnik determinacji (R^2):", r2)
 
-current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-with open("results.txt", "a", encoding="utf-8") as file:
-    file.write("\n\n=== Wyniki dla wywołania z ")
-    file.write(current_time)
-    file.write(" ===\n")
-    
-    file.write(f"Błąd średniokwadratowy (MSE): {mse}\n")
-    file.write(f"Średni błąd bezwzględny (MAE): {mae}\n")
-    file.write(f"Współczynnik determinacji (R^2): {r2}\n")
+    with open("results.txt", "a", encoding="utf-8") as file:
+        file.write("\n\n=== Wyniki dla wywołania z ")
+        file.write(current_time)
+        file.write(" ===\n")
+        
+        file.write(f"Błąd średniokwadratowy (MSE): {mse}\n")
+        file.write(f"Średni błąd bezwzględny (MAE): {mae}\n")
+        file.write(f"Współczynnik determinacji (R^2): {r2}\n")
