@@ -1,0 +1,10 @@
+=== Wyniki dla wywołania z 2024-04-13 11:48:52 ===
+Błąd średniokwadratowy (MSE): 203147671380.74258
+Średni błąd bezwzględny (MAE): 207313.82378597246
+Współczynnik determinacji (R^2): 0.21556984991133377
+
+
+=== Wyniki dla wywołania z 2024-04-13 11:58:05 ===
+Błąd średniokwadratowy (MSE): 203147671380.74258
+Średni błąd bezwzględny (MAE): 207313.82378597246
+Współczynnik determinacji (R^2): 0.21556984991133377
