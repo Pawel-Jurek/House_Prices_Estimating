@@ -14,3 +14,9 @@ Współczynnik determinacji (R^2): 0.21556984991133377
 Błąd średniokwadratowy (MSE): 79421570383.41939
 Średni błąd bezwzględny (MAE): 152284.92262845943
 Współczynnik determinacji (R^2): 0.6933232167875637
+
+
+=== Wyniki dla wywołania z 2024-04-14 18:24:28 ===
+Błąd średniokwadratowy (MSE): 5118431925.379314
+Średni błąd bezwzględny (MAE): 38162.3809577888
+Współczynnik determinacji (R^2): 0.959242181079689
