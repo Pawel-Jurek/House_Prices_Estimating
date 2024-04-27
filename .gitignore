@@ -1,2 +1,4 @@
 AIenv/
 api_key.py
+__pycache__
+.ipynb_checkpoints
