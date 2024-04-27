@@ -1,10 +1,5 @@
 import pandas as pd
 import requests
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from datetime import datetime
-import numpy as np
 from api_key import MAPS_KEY
 
 # koordynacje dla których dzielnica została już określona
@@ -164,26 +159,5 @@ def main():
     # zapisanie wynikowego df z podziałem na dzielnice do pliku
     df2.to_csv("neighborhood_df.csv", index=False, encoding='utf-8')
 
-
-    """Rzeczy które mogą sie przydać do określania wyników modelu
-    mse = mean_squared_error(y_test, y_pred)
-    mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
-
-    print("Błąd średniokwadratowy (MSE):", mse)
-    print("Średni błąd bezwzględny (MAE):", mae)
-    print("Współczynnik determinacji (R^2):", r2)
-
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    with open("results.txt", "a", encoding="utf-8") as file:
-        file.write("\n\n=== Wyniki dla wywołania z ")
-        file.write(current_time)
-        file.write(" ===\n")
-        
-        file.write(f"Błąd średniokwadratowy (MSE): {mse}\n")
-        file.write(f"Średni błąd bezwzględny (MAE): {mae}\n")
-        file.write(f"Współczynnik determinacji (R^2): {r2}\n")
-    """
 if __name__ == '__main__':
     main()
