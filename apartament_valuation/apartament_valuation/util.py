@@ -3,15 +3,63 @@ import numpy as np
 import json
 import pickle
 
+neighborhoods = {
+    "Kraków": [
+        'Stare Miasto', 
+        'Grzegórzki', 
+        'Prądnik Czerwony', 
+        'Prądnik Biały', 
+        'Krowodrza', 
+        'Bronowice', 
+        'Zwierzyniec', 
+        'Dębniki', 
+        'Łagiewniki-Borek Fałęcki',
+        'Swoszowice', 
+        'Podgórze Duchackie', 
+        'Bieżanów-Prokocim', 
+        'Podgórze', 
+        'Czyżyny', 
+        'Mistrzejowice', 
+        'Bieńczyce', 
+        'Wzgórza Krzesławickie', 
+        'Nowa Huta'
+        ],
+
+    "Warszawa":[
+        'Bemowo', 
+        'Białołęka', 
+        'Bielany', 
+        'Mokotów', 
+        'Ochota', 
+        'Praga-Południe', 
+        'Praga-Północ', 
+        'Rembertów', 
+        'Śródmieście', 
+        'Targówek', 
+        'Ursus', 
+        'Ursynów', 
+        'Wawer', 
+        'Wesoła', 
+        'Wilanów', 
+        'Włochy', 
+        'Wola', 
+        'Żoliborz'
+
+], "Poznań":[
+        'Stare Miasto',
+        'Nowe Miasto',
+        'Wilda',
+        'Grunwald',
+        'Jeżyce'
+]}
+
+
 addresses = None
 data_columns = None
 model = None
 
 def get_addresses(city):
-    # todo zrobić faktyczny podział dzielnic względem miast
-    cities = ['kraków', 'poznań','warszawa']
-    index = cities.index(city.lower())
-    return addresses[index*10:(index+1)*10]
+    return neighborhoods[city.capitalize()]
 
 def get_estimated_price(city, address, floor, rooms, sq, year):
     try:
