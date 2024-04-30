@@ -14,9 +14,15 @@ function App() {
   };
 
   const fetchDistricts = (city) => {
-    const response = axios.get('http://localhost:8000/addresses/Warszawa');
-    console.log('http://localhost:8000/addresses/'+city);
-    
+  
+    axios.get('http://localhost:8000/addresses/'+city+'/')
+      .then(response => {      
+        setDistricts(response.data.addresses);      
+      })
+      .catch(error => {
+        console.error('Error fetching districts:', error);
+      });
+
   };
 
   return (
@@ -45,11 +51,9 @@ function App() {
               <div class="select">
                 <select name="format" id="format">
                     <option selected disabled>Choose neighbourhood</option>
-                    <option value="pdf">PDF</option>
-                    <option value="txt">txt</option>
-                    <option value="epub">ePub</option>
-                    <option value="fb2">fb2</option>
-                    <option value="mobi">mobi</option>
+                    {districts.map((district, index) => (
+                      <option key={index} value={district}>{district}</option>
+                    ))}
                 </select>
               </div>
              
