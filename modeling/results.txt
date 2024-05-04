@@ -1,0 +1,88 @@
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-04 22:14:29 ===
+Cities: 0.8722176464969089
+Districts: 0.8725303385661072
+All_Params: 0.8683631617484042
+Params&Cities: 0.8684540969486132
+Params&Districts: 0.8699891257441243
+Cities&Districts: 0.8708203834512452
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 22:59:11 ===
+Cities: -201978.00233863393
+Districts: -69762.63395581653
+All_Params: -48054.907252201665
+Params&Cities: -220827.02296140883
+Params&Districts: -267744.1670631922
+Cities&Districts: -226902.82305514137
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 23:29:50 ===
+Cities: 0.6489250685963637
+Districts: 0
+All_Params: 0
+Params&Cities: 0
+Params&Districts: 0
+Cities&Districts: 0
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 23:32:32 ===
+Cities: 0.4990061718507941
+Districts: 0
+All_Params: 0
+Params&Cities: 0
+Params&Districts: 0
+Cities&Districts: 0
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 23:35:12 ===
+Cities: -1494.6922374056799
+Districts: 0
+All_Params: 0
+Params&Cities: 0
+Params&Districts: 0
+Cities&Districts: 0
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 23:36:29 ===
+Cities: 0.610708324482385
+Districts: 0
+All_Params: 0
+Params&Cities: 0
+Params&Districts: 0
+Cities&Districts: 0
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 23:38:34 ===
+Cities: 0.6323243414958934
+Districts: 0
+All_Params: 0
+Params&Cities: 0
+Params&Districts: 0
+Cities&Districts: 0
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 23:44:41 ===
+Cities: 0.6146629541612618
+Districts: 0.6147579644244399
+All_Params: 0.6133563654239742
+Params&Cities: 0.6137423414110332
+Params&Districts: 0.6127101252031519
+Cities&Districts: 0.6107917171361525
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-04 23:49:16 ===
+Cities: 0.690587373296043
+Districts: 0.6656880930896382
+All_Params: 0.6221039597656403
+Params&Cities: 0.6273694339734478
+Params&Districts: 0.5751700505988286
+Cities&Districts: 0.6501260435660763
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 00:02:16 ===
+Cities: 0.8416854006156498
+Districts: 0.840995159181461
+All_Params: 0.8434643161805697
+Params&Cities: 0.8412237989751199
+Params&Districts: 0.8318364441376398
+Cities&Districts: 0.8390249460937936
