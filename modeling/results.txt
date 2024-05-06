@@ -86,3 +86,389 @@ All_Params: 0.8434643161805697
 Params&Cities: 0.8412237989751199
 Params&Districts: 0.8318364441376398
 Cities&Districts: 0.8390249460937936
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 11:21:55 ===
+Cities: 0.8685130698476429
+Districts: 0.8715444962287556
+All_Params: 0.8737694404611596
+Params&Cities: 0.868002783097289
+Params&Districts: 0.8743316502272305
+Cities&Districts: 0.8713159986638
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi wagi 10 z 2024-05-05 11:35:40 ===
+Cities: 0.8674943894540954
+Districts: 0.8551937047631801
+All_Params: 0.8639896556902599
+Params&Cities: 0.8659499703252713
+Params&Districts: 0.871380010415884
+Cities&Districts: 0.871159029339785
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi wagi 3 z 2024-05-05 11:48:38 ===
+Cities: 0.8756608934615717
+Districts: 0.8628108676234352
+All_Params: 0.8668717431095331
+Params&Cities: 0.8637170414719093
+Params&Districts: 0.8649874658902302
+Cities&Districts: 0.8699518627161557
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 13:03:38 ===
+Cities [4]: 0.8684678356678058
+Districts [4]: 0.8675882915263359
+Params [4]: 0.8632375982310089
+Params_Cities1 [3, 5]: 0.8673331192932893
+Params_Districts1 [3, 5]: 0.8745941828251826
+Cities_Districts1 [3, 5]: 0.8711001809598082
+Params_Cities2 [5, 3]: 0.8716847683537556
+Params_Districts2 [5, 3]: 0.8678849750743225
+Cities_Districts2 [5, 3]: 0.8576755374988325
+Sq [4]: 0.8603692674141263
+Rooms [4]: 0.8692487079683491
+Floor [4]: 0.867701232033414
+Year [4]: 0.868483212423921
+Sq_Districts1 [3, 5]: 0.8533240217742394
+Sq_Districts2 [5, 3]: 0.870533965184995
+Sq_Cities1 [3, 5]: 0.8698282336754801
+Sq_Cities2 [5, 3]: 0.8682406147376092
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 15:00:06 ===
+Params_Cities_Districts [1, 1, 1]: 0.8677843589623673
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-05-05 15:03:14 ===
+Params_Cities_Districts [1, 1, 1]: 0.7875647188909478
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 15:06:46 ===
+Params_Districts1 [1, 1, 1]: 0.8826911180776426
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 15:37:43 ===
+Params_Cities_Districts [1, 1, 1]: 0.870930064532818
+Cities [3]: 0.8732616250792623
+Districts [3]: 0.8637038351051177
+Params [3]: 0.8623653674955982
+Params_Cities1 [2, 4]: 0.8590009078821039
+Params_Districts1 [2, 4]: 0.8640331843051983
+Cities_Districts1 [2, 4]: 0.8662661497464899
+Params_Cities2 [4, 2]: 0.8731474388215135
+Params_Districts2 [4, 2]: 0.8685425148571293
+Cities_Districts2 [4, 2]: 0.8687873388926326
+Sq [3]: 0.86776738878254
+Rooms [3]: 0.873945912204215
+Floor [3]: 0.8708970121991222
+Year [3]: 0.8690578616400964
+Sq_Districts1 [2, 4]: 0.8739647776480028
+Sq_Districts2 [4, 2]: 0.8464200361811567
+Sq_Cities1 [2, 4]: 0.8725998462366781
+Sq_Cities2 [4, 2]: 0.8684205592818748
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:14:43 ===
+Cities [9]: 0.04889427457036677
+Districts [9]: 0.04354332443725695
+Params [9]: 0.050767183119014625
+Params_Cities1 [8, 10]: 0.04610850900070107
+Params_Districts1 [8, 10]: 0.04995218185110739
+Cities_Districts1 [8, 10]: 0.04979565404279784
+Params_Cities2 [10, 8]: 0.050228815236008306
+Params_Districts2 [10, 8]: 0.049764433040239586
+Cities_Districts2 [10, 8]: 0.04907859992761432
+Sq [9]: 0.04502218355500753
+Rooms [9]: 0.04908694324957186
+Floor [9]: 0.0513575652165541
+Year [9]: 0.04891016917321689
+Sq_Districts1 [8, 10]: 0.04681006336601945
+Sq_Districts2 [10, 8]: 0.04961901740277597
+Sq_Cities1 [8, 10]: 0.048316607647616916
+Sq_Cities2 [10, 8]: 0.05167289325372271
+Year_Districts1 [8, 10]: 0.048177779978329505
+Year_Districts2 [10, 8]: 0.03827151544121765
+Year_Cities1 [8, 10]: 0.04812079285814608
+Year_Cities2 [10, 8]: 0.049485069791231795
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:21:54 ===
+Cities [9]: 0.040048606982958534
+Districts [9]: 0.04547453404448365
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:22:03 ===
+Cities [9]: 0.04919718025955466
+Districts [9]: 0.04511836601979646
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:22:13 ===
+Cities [9]: 0.0462183258731097
+Districts [9]: 0.04946496644399012
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:22:22 ===
+Cities [9]: 0.04498501552315137
+Districts [9]: 0.04754192192230211
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:22:31 ===
+Cities [9]: 0.0494723733781105
+Districts [9]: 0.04646074919184262
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:22:40 ===
+Cities [9]: 0.04840213607835364
+Districts [9]: 0.048704030311347624
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:22:49 ===
+Cities [9]: 0.04460116199159225
+Districts [9]: 0.05111311738101665
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:29:32 ===
+Cities [4]: 0.04476334468746668
+Districts [4]: 0.05232363599239531
+
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:38:39 ===
+Cities [3]: 0.043443477947567644
+Districts [3]: 0.047517878921582435
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 16:38:49 ===
+Cities [4]: 0.049235199473841806
+Districts [4]: 0.04514471574139611
+
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 19:27:03 ===
+Cities [3]: 0.8704129627362842
+Districts [3]: 0.8690113714246783
+Params [3]: 0.8663790403199563
+Params_Cities1 [2, 4]: 0.8697405976131849
+Params_Districts1 [2, 4]: 0.8722655333720433
+Cities_Districts1 [2, 4]: 0.8712939950991199
+Params_Cities2 [4, 2]: 0.8743374752150139
+Params_Districts2 [4, 2]: 0.8727117945385683
+Cities_Districts2 [4, 2]: 0.8753595119685529
+Sq [3]: 0.8674746593770779
+Rooms [3]: 0.8697025582389141
+Floor [3]: 0.8694503424547952
+Year [3]: 0.8677363185767784
+Sq_Districts1 [2, 4]: 0.8696491733026852
+Sq_Districts2 [4, 2]: 0.8721308537515854
+Sq_Cities1 [2, 4]: 0.8733789843836262
+Sq_Cities2 [4, 2]: 0.8708455795160276
+Year_Districts1 [2, 4]: 0.8734390748326156
+Year_Districts2 [4, 2]: 0.8674367692437652
+Year_Cities1 [2, 4]: 0.8702052289362674
+Year_Cities2 [4, 2]: 0.8678826887971167
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 19:58:19 ===
+Cities [4]: 0.8754482514800636
+Districts [4]: 0.8526097683703108
+Params [4]: 0.8723381297447697
+Params_Cities1 [3, 5]: 0.8547857053829067
+Params_Districts1 [3, 5]: 0.8701174571599697
+Cities_Districts1 [3, 5]: 0.8747052149128898
+Params_Cities2 [5, 3]: 0.8669654083663438
+Params_Districts2 [5, 3]: 0.8664066457164699
+Cities_Districts2 [5, 3]: 0.8527929335717859
+Sq [4]: 0.8634543000043794
+Rooms [4]: 0.8725605548672097
+Floor [4]: 0.8732281579308298
+Year [4]: 0.8682824568399857
+Sq_Districts1 [3, 5]: 0.8740405037600449
+Sq_Districts2 [5, 3]: 0.8677235441883513
+Sq_Cities1 [3, 5]: 0.8651134566216099
+Sq_Cities2 [5, 3]: 0.8710850516563176
+Year_Districts1 [3, 5]: 0.872619818187054
+Year_Districts2 [5, 3]: 0.8718107415231313
+Year_Cities1 [3, 5]: 0.8738645336325253
+Year_Cities2 [5, 3]: 0.8656031406325306
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-05 20:27:40 ===
+Cities [5]: 0.867169807720349
+Districts [5]: 0.8657339979853043
+Params [5]: 0.8738719189376466
+Params_Cities1 [4, 6]: 0.8650641615453936
+Params_Districts1 [4, 6]: 0.8727078393217604
+Cities_Districts1 [4, 6]: 0.8724273259111027
+Params_Cities2 [6, 4]: 0.8734005692993865
+Params_Districts2 [6, 4]: 0.8610731240901182
+Cities_Districts2 [6, 4]: 0.8708212671521977
+Sq [5]: 0.86167194428756
+Rooms [5]: 0.8650235677149622
+Floor [5]: 0.8661263844486631
+Year [5]: 0.8734344283318135
+Sq_Districts1 [4, 6]: 0.8653693624790637
+Sq_Districts2 [6, 4]: 0.8663071453032529
+Sq_Cities1 [4, 6]: 0.870278714804855
+Sq_Cities2 [6, 4]: 0.8679922194557504
+Year_Districts1 [4, 6]: 0.8716007395673113
+Year_Districts2 [6, 4]: 0.8646691304461406
+Year_Cities1 [4, 6]: 0.8645303373554211
+Year_Cities2 [6, 4]: 0.8748799469832491
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 00:12:56 ===
+Cities [6]: 0.8705074605910406
+Districts [6]: 0.8645335167798787
+Params [6]: 0.8704944073529735
+Params_Cities1 [5, 7]: 0.8739863825868129
+Params_Districts1 [5, 7]: 0.870440690081697
+Cities_Districts1 [5, 7]: 0.8706338565146649
+Params_Cities2 [7, 5]: 0.8714202773226797
+Params_Districts2 [7, 5]: 0.8688288579817262
+Cities_Districts2 [7, 5]: 0.8573767861818014
+Sq [6]: 0.8693692191319293
+Rooms [6]: 0.8664859399802116
+Floor [6]: 0.8748352861277959
+Year [6]: 0.8655731713294467
+Sq_Districts1 [5, 7]: 0.8670811060185156
+Sq_Districts2 [7, 5]: 0.8682924346760423
+Sq_Cities1 [5, 7]: 0.8680276911431822
+Sq_Cities2 [7, 5]: 0.8728648499799939
+Year_Districts1 [5, 7]: 0.8734223187974648
+Year_Districts2 [7, 5]: 0.8679153664321885
+Year_Cities1 [5, 7]: 0.8635375666505073
+Year_Cities2 [7, 5]: 0.86888253891333
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 00:41:17 ===
+Cities [6]: 0.8690396411012432
+Districts [6]: 0.8591745399956675
+Params [6]: 0.8704540764622648
+Params_Cities1 [5, 7]: 0.8726889675531042
+Params_Districts1 [5, 7]: 0.866757007017805
+Cities_Districts1 [5, 7]: 0.8713740613886152
+Params_Cities2 [7, 5]: 0.8713844320996464
+Params_Districts2 [7, 5]: 0.8730006474684406
+Cities_Districts2 [7, 5]: 0.8733040232052485
+Sq [6]: 0.8673861263038025
+Rooms [6]: 0.8568967856707059
+Floor [6]: 0.868341437346829
+Year [6]: 0.8659858378436923
+Sq_Districts1 [5, 7]: 0.8711879536136924
+Sq_Districts2 [7, 5]: 0.8657257351456195
+Sq_Cities1 [5, 7]: 0.8716646166327253
+Sq_Cities2 [7, 5]: 0.86475077901473
+Year_Districts1 [5, 7]: 0.8749522623203043
+Year_Districts2 [7, 5]: 0.8747546588649389
+Year_Cities1 [5, 7]: 0.8766968785239431
+Year_Cities2 [7, 5]: 0.870923910600484
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 01:08:21 ===
+Cities [7]: 0.8703199022884547
+Districts [7]: 0.8717283187450078
+Params [7]: 0.8665005337262944
+Params_Cities1 [6, 8]: 0.867339829119729
+Params_Districts1 [6, 8]: 0.8766027169556105
+Cities_Districts1 [6, 8]: 0.8722346323894795
+Params_Cities2 [8, 6]: 0.8671378511676012
+Params_Districts2 [8, 6]: 0.8727989676622446
+Cities_Districts2 [8, 6]: 0.8724808391256921
+Sq [7]: 0.8728843292434173
+Rooms [7]: 0.8702321748953445
+Floor [7]: 0.8753490756292136
+Year [7]: 0.8708400501995974
+Sq_Districts1 [6, 8]: 0.867728843262343
+Sq_Districts2 [8, 6]: 0.8687780738386939
+Sq_Cities1 [6, 8]: 0.8719204519493848
+Sq_Cities2 [8, 6]: 0.8699922524487579
+Year_Districts1 [6, 8]: 0.8727011098608966
+Year_Districts2 [8, 6]: 0.8696278098598929
+Year_Cities1 [6, 8]: 0.8734875013357183
+Year_Cities2 [8, 6]: 0.872392552913931
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 01:35:55 ===
+Cities [8]: 0.8607886304085766
+Districts [8]: 0.8682339924014852
+Params [8]: 0.8695241074496384
+Params_Cities1 [7, 9]: 0.8578360810490442
+Params_Districts1 [7, 9]: 0.872652347246339
+Cities_Districts1 [7, 9]: 0.8684049747653927
+Params_Cities2 [9, 7]: 0.8698034617510269
+Params_Districts2 [9, 7]: 0.8749792100338881
+Cities_Districts2 [9, 7]: 0.8698382527781151
+Sq [8]: 0.8669728644858568
+Rooms [8]: 0.8729243081870692
+Floor [8]: 0.871282562971084
+Year [8]: 0.8647512107873258
+Sq_Districts1 [7, 9]: 0.8653474073021314
+Sq_Districts2 [9, 7]: 0.8626221203020423
+Sq_Cities1 [7, 9]: 0.8720461744968794
+Sq_Cities2 [9, 7]: 0.8667299986924972
+Year_Districts1 [7, 9]: 0.8663823646135034
+Year_Districts2 [9, 7]: 0.8662598075358182
+Year_Cities1 [7, 9]: 0.8726167415701658
+Year_Cities2 [9, 7]: 0.8740371899565984
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 02:05:07 ===
+Cities [9]: 0.8667932444186635
+Districts [9]: 0.8727339946963101
+Params [9]: 0.8649455604116638
+Params_Cities1 [8, 10]: 0.8711415730835808
+Params_Districts1 [8, 10]: 0.8731654230808334
+Cities_Districts1 [8, 10]: 0.870774266935872
+Params_Cities2 [10, 8]: 0.8732604517521377
+Params_Districts2 [10, 8]: 0.86942959762656
+Cities_Districts2 [10, 8]: 0.8669169315826679
+Sq [9]: 0.8676201186115176
+Rooms [9]: 0.871750733899562
+Floor [9]: 0.8746203691958914
+Year [9]: 0.8667568037298194
+Sq_Districts1 [8, 10]: 0.8731995264997976
+Sq_Districts2 [10, 8]: 0.8601177586252545
+Sq_Cities1 [8, 10]: 0.8682915956039824
+Sq_Cities2 [10, 8]: 0.8620479501379457
+Year_Districts1 [8, 10]: 0.8682746047820562
+Year_Districts2 [10, 8]: 0.8776722422167409
+Year_Cities1 [8, 10]: 0.8670124350474558
+Year_Cities2 [10, 8]: 0.8658111472392214
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 02:34:04 ===
+Cities [10]: 0.870914986110765
+Districts [10]: 0.8704935044593826
+Params [10]: 0.8705321239912837
+Params_Cities1 [9, 11]: 0.8678356775494628
+Params_Districts1 [9, 11]: 0.8624751874536998
+Cities_Districts1 [9, 11]: 0.8749422141782137
+Params_Cities2 [11, 9]: 0.871823892353973
+Params_Districts2 [11, 9]: 0.8698227828499911
+Cities_Districts2 [11, 9]: 0.8665320592067633
+Sq [10]: 0.868067884967135
+Rooms [10]: 0.8707440559268683
+Floor [10]: 0.8609230791321877
+Year [10]: 0.8708383690487321
+Sq_Districts1 [9, 11]: 0.868386820603207
+Sq_Districts2 [11, 9]: 0.8701445317486047
+Sq_Cities1 [9, 11]: 0.8620454984656933
+Sq_Cities2 [11, 9]: 0.8697032606441758
+Year_Districts1 [9, 11]: 0.8660049258350634
+Year_Districts2 [11, 9]: 0.8673529368788995
+Year_Cities1 [9, 11]: 0.8748945426370134
+Year_Cities2 [11, 9]: 0.8717521825880892
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 09:59:14 ===
+Params_Districts1 [6, 8]: 0.8677353028274684
+Cities_Districts2 [4, 2]: 0.8699379594342237
+Year_Districts2 [10, 8]: 0.8668715525624835
+Year_Cities1 [5, 7]: 0.869279898385673
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-06 10:44:33 ===
+Params_Districts1 [6, 8]: 0.8635005068149153
+Cities_Districts2 [4, 2]: 0.8707410583292692
+Year_Districts2 [10, 8]: 0.8730029430301366
+Year_Cities1 [5, 7]: 0.8688303574483275
