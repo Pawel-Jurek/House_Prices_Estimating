@@ -1,7 +1,8 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from .util import get_estimated_price, get_addresses
-#from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 def index(request):
     return render(request, 'index.html')
@@ -13,19 +14,22 @@ def addresses(request, city):
         return JsonResponse({'error': 'Wrong request method'}, status=405)
 
 # chwilowe wyłączenie tokenu do testów
-#@csrf_exempt
+@csrf_exempt
 def valuation(request):
     if request.method == 'POST':
-        
-        sq = request.POST["sq"]
-        address = request.POST["address"]
-        city = request.POST["city"]
-        floor = request.POST["floor"]
-        rooms = request.POST["rooms"]
-        year = request.POST["year"]
-        
+        data = json.loads(request.body)
+        address = data.get("address")
+        sq = data.get("sq")
+        city = data.get("city")
+        floor = data.get("floor")
+        rooms = data.get("rooms")
+        year = data.get("year")
+
+        print(sq, address, city, floor, rooms, year)
+
+
         # Przykładowe dane do testowania
-        '''  
+        '''
         sq = 74.05
         address = 'Podgórze'
         city = 'Kraków'
