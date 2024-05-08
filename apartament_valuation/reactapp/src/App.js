@@ -43,11 +43,12 @@ function App() {
       url: 'http://localhost:8000/valuation/',
       data: {
         city: city,
-        address: 'xD',
+        district: district,
         sq: square,
         rooms: rooms,
         floor: floor,
-        year: year
+        year: year,
+        model: "tf" // zrobić w formularzu pole do wyboru modelu. Opcje do wysyłania tf - Tensorflow, lr - Linear Regression
       }
     })
       .then(response => {      
