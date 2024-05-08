@@ -18,14 +18,14 @@ def addresses(request, city):
 def valuation(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        address = data.get("address")
+        district = data.get("district")
         sq = data.get("sq")
         city = data.get("city")
         floor = data.get("floor")
         rooms = data.get("rooms")
         year = data.get("year")
-
-        print(sq, address, city, floor, rooms, year)
+        model = data.get("model")
+        #print(sq, district, city, floor, rooms, year)
 
 
         # Przykładowe dane do testowania
@@ -38,8 +38,8 @@ def valuation(request):
         year = 2021.0
         '''
     
-        if sq and address and city and floor and rooms and year:
-            return JsonResponse({'price': get_estimated_price(city, address, floor, rooms, sq, year)}, status=200)
+        if sq and district and city and floor != None and rooms and year and model:
+            return JsonResponse({'price': get_estimated_price(city, district, floor, rooms, sq, year, model)}, status=200)
         else:
             return JsonResponse({'error': 'Missing data'}, status=400)
     else:

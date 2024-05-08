@@ -2,6 +2,10 @@ import os
 import numpy as np
 import json
 import pickle
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+
 
 neighborhoods = {
     "Kraków": [
@@ -56,33 +60,41 @@ neighborhoods = {
 
 addresses = None
 data_columns = None
-model = None
+model_lr = None # sklearn LinearRegression model
+model_tf = None # tensorflow model
 
 def get_addresses(city):
     return neighborhoods[city.capitalize()]
 
-def get_estimated_price(city, address, floor, rooms, sq, year):
+def get_estimated_price(city, district, floor, rooms, sq, year, model_name):
     try:
-        address_index = data_columns.index(address.lower())
+        district_index = data_columns.index(district.lower())
         city_index = data_columns.index(city.lower())
     except:
-        address_index = -1
+        district_index = -1
         city_index = -1
     x = np.zeros(len(data_columns))
     x[0] = floor
     x[1] = rooms
     x[2] = sq
     x[3] = year
-    if address_index >= 0:
-        x[address_index] = 1
+    if district_index >= 0:
+        x[district_index] = 1
     if city_index >= 0:
         x[city_index] = 1
-    return round(model.predict([x])[0],2)
+    if model_name == "tf":
+        x = x.reshape(1, -1)
+        return round(model_tf.predict(x)[0][0],2).astype(float)
+    else:
+        return round(model_lr.predict([x])[0],2)
+
+    
 
 def load_artifacts():
     global data_columns
     global addresses
-    global model
+    global model_lr
+    global model_tf
 
     modeling_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'modeling')
     
@@ -91,9 +103,13 @@ def load_artifacts():
         data_columns = json.load(file)['data_columns']
         addresses = data_columns[4:]
     
-    model_path = os.path.join(modeling_dir, 'house_prices_model.pickle')
-    with open(model_path, 'rb') as file:
-        model = pickle.load(file)
+    model_lr_path = os.path.join(modeling_dir, 'house_prices_model.pickle')
+    with open(model_lr_path, 'rb') as file:
+        model_lr = pickle.load(file)
+
+    model_tf_path = os.path.join(modeling_dir, 'house_prices_ann_model.pickle')
+    with open(model_tf_path, 'rb') as file:
+        model_tf = pickle.load(file)
 
 
 load_artifacts()
