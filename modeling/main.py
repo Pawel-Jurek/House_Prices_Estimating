@@ -67,9 +67,11 @@ def set_neighborhoods(df):
         latitude = round(df.at[index, "latitude"], 7)
         longitude = round(df.at[index, "longitude"], 7)
         coords = (latitude, longitude)
+        success = False
         # sprawdzenie czy wskazane koordynacje nie występują już w słowniku. Jeśli już są, to korzystamy z gotowych wartości
         if coords in coordinates.keys():
-                df.at[index, "address"] = coordinates[coords]
+            df.at[index, "address"] = coordinates[coords]
+            success = True
         else:        
             address_parts = address.strip().split(" ")
             for i in range(len(address_parts)):
@@ -81,27 +83,34 @@ def set_neighborhoods(df):
                         df.at[index, "address"] = f'{address_parts[i]} {address_parts[i+1]}'
                     else:
                         df.at[index, "address"] = address_parts[i]
+                    success = True
                     break
                 else:
-                    # wpisać tutaj continue jeśli chce się puszczać wszystko od nowa bez załadowanych koordynacji, żeby nie marnować requestów api
+                    continue
+                    # odkomnentować tutaj continue jeśli chce się puszczać wszystko od nowa bez załadowanych koordynacji, żeby nie marnować requestów api
                     # najpierw dane się pouzupełniają między sobą i tablicą koordynacji, a później resztę trzeba pobrać z api
                     url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={latitude},{longitude}&key={MAPS_KEY}"
                     response = requests.get(url)
                     if response.status_code == 200:
                         data = response.json()
                         for result in data['results'][0]['address_components']:
-                                for neighborhood in city_neighborhoods:
-                                    if neighborhood == result.get('long_name', ''):
-                                        df.at[index, "address"] = neighborhood
-                                        break
-                        addresses_to_remove.append(address)
+                            for neighborhood in city_neighborhoods:
+                                if neighborhood == result.get('long_name', ''):
+                                    df.at[index, "address"] = neighborhood
+                                    success = True
+                                    break
+                        if not success:        
+                            addresses_to_remove.append(address)
+                        break
                     else:
                         print("Błąd: Nie udało się pobrać danych z API")
+                        success = False
                         break
-           
-        if coords not in coordinates.keys():
-            coordinates[coords] = df.at[index, "address"]
-    
+
+            if success and coords not in coordinates.keys():
+                coordinates[coords] = df.at[index, "address"]
+                success = False  
+          
     # wywalamy linie, których dzielnice nie zostały rozpoznane
     for address in addresses_to_remove:
         df.drop(df[df.address == address].index, inplace=True)
