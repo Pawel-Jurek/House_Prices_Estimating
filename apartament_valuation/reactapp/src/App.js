@@ -6,8 +6,12 @@ import axios from 'axios';
 
 function App() {
 
+  const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [selectedCity, setSelectedCity] = useState('');
-  const [districts, setDistricts] = useState([]); // Stan przechowujący listę dzielnic
+  const [districts, setDistricts] = useState([]);
+  const [selectedModel, setSelectedModel] = useState(''); 
 
   const [city, setCity] = useState('');
   const [district, setDistrict] = useState('');
@@ -16,11 +20,18 @@ function App() {
   const [floor, setFloor] = useState('');
   const [year, setYear] = useState('');
 
+  const [price, setPrice] = useState('');
+
+  
+  const handleModelChange = (e) => {
+    setSelectedModel(e.target.value);
+  };
+
   const handleCityChange = (e) => {
-    
+     
     setSelectedCity(e.target.value);
     setCity(e.target.value);
-    fetchDistricts(e.target.value); // Wywołaj funkcję pobierającą listę dzielnic po zmianie miasta
+    fetchDistricts(e.target.value);
   };
 
   const fetchDistricts = (city) => {
@@ -48,11 +59,17 @@ function App() {
         rooms: rooms,
         floor: floor,
         year: year,
-        model: "tf" // zrobić w formularzu pole do wyboru modelu. Opcje do wysyłania tf - Tensorflow, lr - Linear Regression
+        model: selectedModel
       }
     })
-      .then(response => {      
-        alert('Predicted price: ' + response.data.price);
+      .then(response => {
+        setPrice(parseInt(response.data.price).toLocaleString('pl-PL'));      
+        setShowPopup(true);
+        setIsLoading(true);
+        setTimeout(() => {
+          setIsLoading(false);
+          
+        }, 3000); 
       })
       .catch(error => {
         console.error('Error predicting price:', error);
@@ -67,6 +84,16 @@ function App() {
         <p>Estimate the price of a place based on its characteristics</p>
         
         <div class="login-box">
+            <div class="radio-inputs">
+              <label className="radio">
+                <input type="radio" name="radio" value="tf" onChange={handleModelChange} />
+                <span className="name">Tensorflow</span>
+              </label>
+              <label className="radio">
+                <input type="radio" name="radio" value="lr" onChange={handleModelChange} />
+                <span className="name">Linear Regression</span>
+              </label>
+            </div>
         
             <form>
               <div className="radio-inputs">
@@ -115,7 +142,29 @@ function App() {
          </div>
       </div>
       <div className='right'>
+        {showPopup && (
+          <>
+            <div className="overlay" onClick={() => setShowPopup(false)}></div>
+              <div className="popUp">
+                {isLoading ? (
+                  <>
+                    <h1> We are calculating ... </h1>
+                    <div className="loading">Loading&#8230;</div> 
+                  </>
+                ) : (
+                  <>
+                    <p>Price for a <b>{rooms} </b> room <b>{square} m&#178;</b> apartment located in <b>{city}</b> <b>{district}</b> on the <b>{floor}</b> floor build in <b>{year}</b></p>
+                    <h1> {price} zł</h1>
+                  </>
+                )}
+
+              </div>
+          </>
+        )}
         <img src={logo}/>
+        <a onClick={predictPrice}>
+          Predict price
+        </a>
       </div>
     </div>
   );
