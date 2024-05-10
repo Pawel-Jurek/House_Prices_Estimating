@@ -664,3 +664,25 @@ Year_Districts1 [9, 11]: 0.8675069006232479
 Year_Districts2 [11, 9]: 0.8705555723395758
 Year_Cities1 [9, 11]: 0.8710517714940711
 Year_Cities2 [11, 9]: 0.8713791204026601
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-05-10 13:40:15 ===
+Floor [8]: 0.8672587137543676
+Params_Cities1 [6, 4]: 0.8676255865871637
+Floor2 [7]: 0.8670080459383074
+Year [5]: 0.8707946103171988
+Year_Cities [8, 6]: 0.8688911990330108
+Year_Districts [7, 5]: 0.8704049685502916
+Rooms [10]: 0.869735419115503
+Floor3 [3]: 0.8687047207943774
+Params_Districts1 [9, 11]: 0.8672489274834063
+Params_Cities2 [4, 2]: 0.8664103560372418
+Floor_Rooms [8, 0.1]: 0.8705210819524716
+Params_Cities_Rooms1 [6, 4, 0.1]: 0.8679868052205653
+Floor_Rooms2 [7, 0.1]: 0.8695791989833245
+Year_Rooms [5, 0.1]: 0.8682859554740331
+Year_Cities_Rooms [8, 6, 0.1]: 0.8712740056596038
+Year_Districts_Rooms [7, 5, 0.1]: 0.8723411505780664
+Floor_Rooms3 [3, 0.1]: 0.869183975990125
+Params_Districts_Rooms1 [9, 11, 0.1]: 0.8709292617769073
+Params_Cities_Rooms2 [4, 2, 0.1]: 0.8701044094215273
