@@ -36,7 +36,7 @@ function App() {
 
   const fetchDistricts = (city) => {
   
-    axios.get('http://localhost:8000/addresses/'+city+'/')
+    axios.get('http://localhost:8000/valuation/addresses/'+city+'/')
       .then(response => {      
         setDistricts(response.data.addresses);   
       
