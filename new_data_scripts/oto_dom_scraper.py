@@ -192,3 +192,26 @@ if __name__ == "__main__":
 
     for base_url in base_urls:
         scrape_apartments(base_url, years)
+
+    apartments = Apartment.objects.all()
+
+    apartment_data = []
+    for apartment in apartments:
+        apartment_data.append({
+            'district': apartment.district,
+            'city': apartment.city,
+            'floor': apartment.floor,
+            'price': apartment.price,
+            'rooms': apartment.rooms,
+            'sq': apartment.sq,
+            'year': apartment.year,
+            'price_per_sq': apartment.price_per_sq,
+            'update_date': apartment.update_date,
+            'offer_url': apartment.offer_url
+        })
+
+    df = pd.DataFrame(apartment_data)
+
+    output_file = os.path.join("../modeling", "Updated_Houses.csv")
+
+    df.to_csv(output_file, encoding='utf-8', index=False)
