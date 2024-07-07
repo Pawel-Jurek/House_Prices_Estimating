@@ -1,3 +1,4 @@
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -11,6 +12,59 @@ sys.path.append(project_root)
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "apartament_valuation.settings")
 django.setup()
+
+neighborhoods = {
+    "Kraków": [
+        'Stare Miasto', 
+        'Grzegórzki', 
+        'Prądnik Czerwony', 
+        'Prądnik Biały', 
+        'Krowodrza', 
+        'Bronowice', 
+        'Zwierzyniec', 
+        'Dębniki', 
+        'Łagiewniki-Borek Fałęcki',
+        'Swoszowice', 
+        'Podgórze Duchackie', 
+        'Bieżanów-Prokocim', 
+        'Podgórze', 
+        'Czyżyny', 
+        'Mistrzejowice', 
+        'Bieńczyce', 
+        'Wzgórza Krzesławickie', 
+        'Nowa Huta'
+        ],
+
+    "Warszawa":[
+        'Bemowo', 
+        'Białołęka', 
+        'Bielany', 
+        'Mokotów', 
+        'Ochota', 
+        'Praga-Południe', 
+        'Praga-Północ', 
+        'Rembertów', 
+        'Śródmieście', 
+        'Targówek', 
+        'Ursus', 
+        'Ursynów', 
+        'Wawer', 
+        'Wesoła', 
+        'Wilanów', 
+        'Włochy', 
+        'Wola', 
+        'Żoliborz'
+
+], "Poznań":[
+        'Stare Miasto',
+        'Nowe Miasto',
+        'Wilda',
+        'Grunwald',
+        'Jeżyce'
+]}
+
+
+
 
 from valuation.models import Apartment
 
@@ -49,11 +103,11 @@ def parse_apartments(html, city, year):
             price_per_sq = get_data_from_text(details, "kwadratowy", "zł")
             offer_url = "https://www.otodom.pl" + link_element['href']
             apartment = {
-                'district': district,
+                'district': district if district in neighborhoods[city] else None,
                 'city': city,
                 'floor': int(floor) if floor.isdigit() else 0,
                 'price': float(price),
-                'rooms': int(rooms) if rooms.isdigit() else 0,
+                'rooms': int(rooms) if rooms.isdigit() else 1,
                 'sq': float(sq),
                 'price_per_sq': float(price_per_sq),
                 'year': year,
@@ -66,9 +120,27 @@ def parse_apartments(html, city, year):
 
     return apartments
 
+def validate_apartment_data(data):
+    required_fields = ['district', 'city', 'price', 'rooms', 'sq', 'price_per_sq', 'offer_url']
+    for field in required_fields:
+        if not data.get(field):
+            return False
+    return True
+
 def import_apartments_to_db(apartments):
     for data in apartments:
-        if not Apartment.objects.filter(offer_url=data['offer_url']).exists():
+        if not validate_apartment_data(data):
+            continue
+
+        try:
+            existing_apartment = Apartment.objects.get(offer_url=data['offer_url'])
+            if existing_apartment.price != data['price'] or existing_apartment.price_per_sq != data['price_per_sq']:
+                existing_apartment.price = data['price']
+                existing_apartment.price_per_sq = data['price_per_sq']
+                existing_apartment.update_date = datetime.date.today()
+                existing_apartment.save()
+
+        except Apartment.DoesNotExist:
             Apartment.objects.create(
                 district=data['district'],
                 city=data['city'],
@@ -81,7 +153,6 @@ def import_apartments_to_db(apartments):
                 update_date=datetime.date.today(),
                 offer_url=data['offer_url']
             )
-    print(f"Successfully imported {len(apartments)} apartments to the database.")
 
 
 def get_total_pages(html):
@@ -121,4 +192,3 @@ if __name__ == "__main__":
 
     for base_url in base_urls:
         scrape_apartments(base_url, years)
-
