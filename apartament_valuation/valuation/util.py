@@ -58,7 +58,6 @@ neighborhoods = {
 ]}
 
 
-addresses = None
 data_columns = None
 model_lr = None # sklearn LinearRegression model
 model_tf = None # tensorflow model
@@ -67,32 +66,40 @@ def get_addresses(city):
     return neighborhoods[city.capitalize()]
 
 def get_estimated_price(city, district, floor, rooms, sq, year, model_name):
+    # import ipdb; ipdb.set_trace()
+
     try:
         district_index = data_columns.index(district.lower())
         city_index = data_columns.index(city.lower())
     except:
         district_index = -1
         city_index = -1
-    x = np.zeros(len(data_columns))
-    x[0] = floor
-    x[1] = rooms
-    x[2] = sq
-    x[3] = year
-    if district_index >= 0:
-        x[district_index] = 1
-    if city_index >= 0:
-        x[city_index] = 1
-    if model_name == "tf":
-        x = x.reshape(1, -1)
-        return round(model_tf.predict(x)[0][0],2).astype(float)
-    else:
-        return round(model_lr.predict([x])[0],2)
+    
+    try:
+        x = np.zeros(len(data_columns))
+        x[0] = floor
+        x[1] = rooms
+        x[2] = sq
+        x[3] = year
+
+        if district_index >= 0 and city_index >= 0:
+            x[district_index] = 1
+            x[city_index] = 1
+            if model_name == "tf":
+                x = x.reshape(1, -1)
+                return round(model_tf.predict(x)[0][0],2).astype(float)
+            else:
+                return round(model_lr.predict([x])[0],2)
+        else:
+            return 0
+        
+    except ValueError as e:
+        return 0
 
     
 
 def load_artifacts():
     global data_columns
-    global addresses
     global model_lr
     global model_tf
 
@@ -101,7 +108,6 @@ def load_artifacts():
     columns_path = os.path.join(modeling_dir, 'columns.json')
     with open(columns_path, 'r') as file:
         data_columns = json.load(file)['data_columns']
-        addresses = data_columns[4:]
     
     model_lr_path = os.path.join(modeling_dir, 'house_prices_model.pickle')
     with open(model_lr_path, 'rb') as file:
