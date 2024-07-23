@@ -686,3 +686,38 @@ Year_Districts_Rooms [7, 5, 0.1]: 0.8723411505780664
 Floor_Rooms3 [3, 0.1]: 0.869183975990125
 Params_Districts_Rooms1 [9, 11, 0.1]: 0.8709292617769073
 Params_Cities_Rooms2 [4, 2, 0.1]: 0.8701044094215273
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 17:18:22 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 17:24:41 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 17:40:52 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 17:51:14 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 18:01:31 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 18:10:07 ===
+
+
+=== Wyniki dla wywołania z danymi nieprzeskalowanymi z 2024-07-23 18:25:18 ===
+Cities [2]: 0.8761646139871416
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 18:28:33 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 18:35:47 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 18:38:54 ===
+
+
+=== Wyniki dla wywołania z danymi przeskalowanymi z 2024-07-23 19:13:10 ===
+Cities [2]: 0.8634433748547932
