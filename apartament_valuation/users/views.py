@@ -1,6 +1,6 @@
-from rest_framework import generics
-from .models import User
-from .serializers import UserSerializer
+from rest_framework import generics, permissions
+from .models import User, ApartmentSearch
+from .serializers import UserSerializer, ApartmentSearchSerializer, CreateApartmentSearchSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
@@ -28,3 +28,22 @@ class UserDetailView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
+
+
+
+class ApartmentSearchListCreateView(generics.ListCreateAPIView):
+    serializer_class = ApartmentSearchSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return ApartmentSearch.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class ApartmentSearchDetailView(generics.RetrieveAPIView):
+    serializer_class = ApartmentSearchSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return ApartmentSearch.objects.filter(user=self.request.user)
