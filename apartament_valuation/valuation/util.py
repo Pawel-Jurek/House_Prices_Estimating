@@ -85,8 +85,14 @@ def get_estimated_price(city, district, floor, rooms, sq, year, model_name):
         if district_index >= 0 and city_index >= 0:
             x[district_index] = 1
             x[city_index] = 1
+            model_name = "tf"
             if model_name == "tf":
                 x = x.reshape(1, -1)
+                # for fork model
+                preds = model_tf.predict(x)
+                lower_pred = float(np.round(preds[0][0], 2))
+                upper_pred = float(np.round(preds[1][0], 2))
+                return lower_pred, upper_pred
                 return round(model_tf.predict(x)[0][0],2).astype(float)
             else:
                 return round(model_lr.predict([x])[0],2)
@@ -113,7 +119,8 @@ def load_artifacts():
     with open(model_lr_path, 'rb') as file:
         model_lr = pickle.load(file)
 
-    model_tf_path = os.path.join(modeling_dir, 'house_prices_ann_model.pickle')
+    #model_tf_path = os.path.join(modeling_dir, 'house_prices_ann_model.pickle')
+    model_tf_path = os.path.join(modeling_dir, 'house_prices_fork_ann_model.pickle')
     with open(model_tf_path, 'rb') as file:
         model_tf = pickle.load(file)
 
