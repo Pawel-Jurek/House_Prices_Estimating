@@ -6,6 +6,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
@@ -30,6 +31,15 @@ class UserDetailView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
 
 
+class CustomTokenObtainPairView(TokenObtainPairView):
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        try:
+            user = User.objects.get(username=request.data['username'])
+            response.data['user_id'] = user.id 
+        except User.DoesNotExist:
+            pass
+        return response
 
 class ApartmentSearchListCreateView(generics.ListCreateAPIView):
     serializer_class = ApartmentSearchSerializer
