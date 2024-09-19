@@ -7,11 +7,25 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'password', 'password2']
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'username': {'required': True},
+            'email': {'required': True}
+        }
+
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            raise serializers.ValidationError("This email is already in use.")
+        return value
+
+    def validate_username(self, value):
+        if User.objects.filter(username=value).exists():
+            raise serializers.ValidationError("This username is already taken.")
+        return value
 
     def validate(self, data):
         if data['password'] != data['password2']:
-            raise serializers.ValidationError("Hasła nie są takie same.")
+            raise serializers.ValidationError({"password": "The passwords do not match."})
         return data
 
     def create(self, validated_data):
