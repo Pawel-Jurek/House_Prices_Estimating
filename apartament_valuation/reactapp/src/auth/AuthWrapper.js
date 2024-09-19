@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { RenderRoutes } from "../auth/RenderNavigation";  
+import { toast } from "react-toastify";
 
 
 const AuthContext = createContext();
@@ -18,18 +19,22 @@ export const AuthWrapper = () => {
       isAuthenticated: false,
     });
 
-    const login = async (email1, password1) => {
+    const login = async (username1, password1) => {
         try {
-          const { data } = await axios.post("http://localhost:13000/api/auth/login/", {
-            email: email1,
+          const { data } = await axios.post("http://localhost:8000/users/login/", {
+            username: username1,
             password: password1,
           });
+
+          console.log(data);
           
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('refreshToken', data.refreshToken);
-      
+          localStorage.setItem('accessToken', data.access);
+          localStorage.setItem('refreshToken', data.refresh);
+          localStorage.setItem('userID', data.user_id);
           getUser();
-    
+          navigate("/");
+          toast.success('Logged in successfully', { position: 'top-center' });
+         
         } catch (error) {
             console.log(error);
             }
@@ -38,33 +43,40 @@ export const AuthWrapper = () => {
     const getUser = async () => {
         try {
           const accessToken = localStorage.getItem('accessToken');
+          const userID = localStorage.getItem('userID');
           if (!accessToken) {
             throw new Error('No access token available');
           }
     
-          const { data } = await axios.get("http://localhost:13000/api/auth/user", {
+          const { data } = await axios.get(`http://localhost:8000/users/${userID}`, {
             headers: { Authorization: `Bearer ${accessToken}` },
           });
-    
+ 
           setUser({
             ...user,
             isAuthenticated: true,
             username: data.username,
             email: data.email,
-            userID: data.userID,
+            userID: data.id,
           });
+        
+
         } catch (error) {
           console.log(error);
         }
     };
 
-    const register1 = async (username1, email1, password1, firstName1, familyName1) => {
+    const register1 = async (username1, email1, password1, password22) => {
         try {
-          const { data } = await axios.post("http://localhost:13000/api/auth/register/", {
+          
+          const { data } = await axios.post("http://localhost:8000/users/register/", {
             username: username1,
-            email: email1,
             password: password1,
+            password2: password22,
+            email: email1,      
           });
+          console.log(data)
+          navigate("/login");
 
         } catch (error) {
             console.log(error);
@@ -81,6 +93,7 @@ export const AuthWrapper = () => {
           isAuthenticated: false,
         });
         navigate("/");
+        toast.success('Logged out successfully', { position: 'top-center' });
       };
 
       useEffect(() => {
