@@ -34,7 +34,7 @@ const Register = () => {
     <>
       <section class="bg-white">
     <div class="grid grid-cols-1 lg:grid-cols-2">
-        <div class="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-16">
+        <div class="flex items-center justify-center px-4 py-10 bg-white  min-h-screen sm:px-6 lg:px-8 sm:py-16 lg:py-8">
             <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
                 <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign up</h2>
                 <p class="mt-2 text-base text-gray-600">Already have an account? <a href="/login" title="" class="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline focus:text-blue-700">Login</a></p>

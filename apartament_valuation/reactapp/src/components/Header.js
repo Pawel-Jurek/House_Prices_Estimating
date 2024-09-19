@@ -44,9 +44,7 @@ const Header = ({ scrollToSection, refs }) => {
               <a onClick={() => scrollToSection(refs.about)} className="cursor-pointer font-medium text-black">
                 About
               </a>
-              <a onClick={() => scrollToSection(refs.contact)} className="cursor-pointer font-medium text-black">
-                Contact
-              </a>
+              
             </div>
 
                 <div class="lg:absolute lg:-translate-x-1/2 lg:inset-y-5 lg:left-1/2">

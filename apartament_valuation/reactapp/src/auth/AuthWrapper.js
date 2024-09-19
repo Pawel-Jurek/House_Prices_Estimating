@@ -32,12 +32,15 @@ export const AuthWrapper = () => {
           localStorage.setItem('refreshToken', data.refresh);
           localStorage.setItem('userID', data.user_id);
           getUser();
-          navigate("/");
+          navigate("/account");
           toast.success('Logged in successfully', { position: 'top-center' });
          
         } catch (error) {
             console.log(error);
+            if (error.response.status === 401) {
+                toast.error('Invalid username or password', { position: 'top-center' });
             }
+        }
     }
 
     const getUser = async () => {

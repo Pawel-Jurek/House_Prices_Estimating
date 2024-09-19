@@ -1,15 +1,19 @@
 import React from 'react';
 import { AuthData } from '../auth/AuthWrapper';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
     const { login } = AuthData();
+    const { user } = AuthData();
 
     const [formData, setFormData] = React.useState({
       username: '',
       password: ''
     });
 
+
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setFormData({
           ...formData,
@@ -28,7 +32,19 @@ const Login = () => {
 
   return (
     <>
-      <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
+      
+    { user.isAuthenticated ? (
+      <div class="min-h-screen flex flex-grow items-center justify-center bg-gray-50">
+        <div class="rounded-lg bg-white p-8 text-center shadow-xl">
+          <h1 class="mb-4 text-4xl font-bold">404</h1>
+          <p class="text-gray-600">You are already logged in!</p>
+          <a href="/" class="mt-4 inline-block rounded bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600"> Go back to Home </a>
+        </div>  
+    </div>
+    )
+    :
+    <>
+      <section className="py-10 min-h-screen bg-gray-50 sm:py-16 lg:py-24">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Welcome Back!</h2>
@@ -53,7 +69,8 @@ const Login = () => {
                           type="text"
                           value={formData.username}
                           onChange={handleChange}
-                          name="username"  // Dodano wartość 'name'
+                          required
+                          name="username"
                           id="username"
                           placeholder="Enter username to get started"
                           className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
@@ -83,7 +100,8 @@ const Login = () => {
                           type="password"
                           value={formData.password}
                           onChange={handleChange}
-                          name="password"  // Dodano wartość 'name'
+                          name="password"
+                          required
                           id="password"
                           placeholder="Enter your password"
                           className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
@@ -107,6 +125,10 @@ const Login = () => {
           </div>
         </div>
       </section>
+    </>
+    }
+
+      
     </>
   );
 };
