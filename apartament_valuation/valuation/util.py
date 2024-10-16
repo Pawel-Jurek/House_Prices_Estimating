@@ -2,6 +2,7 @@ import os
 import numpy as np
 import json
 import pickle
+import random
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 sys.stderr.reconfigure(encoding='utf-8')
@@ -65,7 +66,7 @@ model_tf = None # tensorflow model
 def get_addresses(city):
     return neighborhoods[city.capitalize()]
 
-def get_estimated_price(city, district, floor, rooms, sq, year, model_name):
+def get_estimated_price(city, district, floor, rooms, sq, year, prediction_year, prediction_quartal):
     # import ipdb; ipdb.set_trace()
 
     try:
@@ -85,17 +86,13 @@ def get_estimated_price(city, district, floor, rooms, sq, year, model_name):
         if district_index >= 0 and city_index >= 0:
             x[district_index] = 1
             x[city_index] = 1
-            model_name = "tf"
-            if model_name == "tf":
-                x = x.reshape(1, -1)
-                # for fork model
-                preds = model_tf.predict(x)
-                lower_pred = float(np.round(preds[0][0], 2))
-                upper_pred = float(np.round(preds[1][0], 2))
-                return lower_pred, upper_pred
-                return round(model_tf.predict(x)[0][0],2).astype(float)
-            else:
-                return round(model_lr.predict([x])[0],2)
+            x = x.reshape(1, -1)
+            
+            # for fork model
+            preds = model_tf.predict(x)
+            lower_pred = float(np.round(preds[0][0], 2))
+            upper_pred = float(np.round(preds[1][0], 2))
+            return lower_pred, upper_pred, round(random.uniform(-100.00, 100.00), 2)
         else:
             return 0
         
