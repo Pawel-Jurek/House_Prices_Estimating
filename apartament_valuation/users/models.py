@@ -33,5 +33,16 @@ class ApartmentSearch(models.Model):
     suggested_price_max = models.FloatField()
     search_date = models.DateTimeField(auto_now_add=True)
 
+    PREDICTION_QUARTAL_CHOICES = [
+        (1, 'Q1'),
+        (2, 'Q2'),
+        (3, 'Q3'),
+        (4, 'Q4'),
+    ]
+
+    prediction_year = models.IntegerField(default=2024)
+    prediction_quartal = models.IntegerField(choices=PREDICTION_QUARTAL_CHOICES, default=3)
+
+
     def __str__(self):
         return f"Search by {self.user} on {self.search_date}"
