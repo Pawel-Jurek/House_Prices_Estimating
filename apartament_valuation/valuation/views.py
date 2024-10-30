@@ -1,12 +1,12 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-from users.models import ApartmentSearch
+from users.models import ApartmentSearch, User
 from .util import get_estimated_price, get_addresses
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-def index(request):
+def index(request):  
     return render(request, 'index.html')
 
 def addresses(request, city):
@@ -15,8 +15,16 @@ def addresses(request, city):
     else:
         return JsonResponse({'error': 'Wrong request method'}, status=405)
 
+@api_view(['GET'])
+def get_home_data(request):
+    data = {
+            'valuations_count': ApartmentSearch.objects.all().count(),
+            'users_count': User.objects.all().count(),
+        }
+    return JsonResponse(data=data)
+
 # chwilowe wyłączenie tokenu do testów
-@csrf_exempt
+# @csrf_exempt
 @api_view(['POST'])
 def valuation(request):
     if not request.user.is_authenticated:
@@ -31,7 +39,7 @@ def valuation(request):
         rooms = data.get("rooms")
         year = data.get("year")
         prediction_year = data.get("prediction_year")
-        prediction_quartal = data.get("prediction_year")
+        prediction_month = data.get("prediction_year")
 
     # Przykładowe dane do testowania
     else:
@@ -42,15 +50,10 @@ def valuation(request):
         rooms = 3.0
         year = 2021.0
         prediction_year= 2025
-        prediction_quartal = 1
+        prediction_month = 1
 
-
-
-    
-
-
-    if sq and district and city and floor != None and rooms and year and prediction_quartal and prediction_year:
-        lower_price, upper_price, percent = get_estimated_price(city, district, floor, rooms, sq, year, prediction_year, prediction_quartal)
+    if sq and district and city and floor != None and rooms and year and prediction_month and prediction_year:
+        lower_price, upper_price, percent = get_estimated_price(city, district, floor, rooms, sq, year, prediction_year, prediction_month)
 
         search = ApartmentSearch.objects.create(
             user=request.user,
@@ -63,7 +66,7 @@ def valuation(request):
             suggested_price_min=lower_price,
             suggested_price_max=upper_price,
             prediction_year=prediction_year,
-            prediction_quartal=prediction_quartal
+            prediction_month=prediction_month
         )
 
         return JsonResponse({'price': {'lower': lower_price, 'upper': upper_price, }, 'percent': percent}, status=200)

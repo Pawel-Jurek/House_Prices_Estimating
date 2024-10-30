@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 from django.conf import settings
+from datetime import datetime
 
 class User(AbstractUser):
     groups = models.ManyToManyField(
@@ -33,15 +34,23 @@ class ApartmentSearch(models.Model):
     suggested_price_max = models.FloatField()
     search_date = models.DateTimeField(auto_now_add=True)
 
-    PREDICTION_QUARTAL_CHOICES = [
-        (1, 'Q1'),
-        (2, 'Q2'),
-        (3, 'Q3'),
-        (4, 'Q4'),
+    PREDICTION_MONTH_CHOICES = [
+        (1, 'January'),
+        (2, 'February'),
+        (3, 'March'),
+        (4, 'April'),
+        (5, 'May'),
+        (6, 'June'),
+        (7, 'July'),
+        (8, 'August'),
+        (9, 'September'),
+        (10, 'October'),
+        (11, 'November'),
+        (12, 'December'),
     ]
 
-    prediction_year = models.IntegerField(default=2024)
-    prediction_quartal = models.IntegerField(choices=PREDICTION_QUARTAL_CHOICES, default=3)
+    prediction_year = models.IntegerField(default=datetime.now().year)
+    prediction_month = models.IntegerField(choices=PREDICTION_MONTH_CHOICES, default=datetime.now().month)
 
 
     def __str__(self):

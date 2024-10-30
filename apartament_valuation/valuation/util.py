@@ -66,7 +66,7 @@ model_tf = None # tensorflow model
 def get_addresses(city):
     return neighborhoods[city.capitalize()]
 
-def get_estimated_price(city, district, floor, rooms, sq, year, prediction_year, prediction_quartal):
+def get_estimated_price(city, district, floor, rooms, sq, year, prediction_year, prediction_month):
     # import ipdb; ipdb.set_trace()
 
     try:
