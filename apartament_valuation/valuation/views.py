@@ -39,7 +39,7 @@ def valuation(request):
         rooms = data.get("rooms")
         year = data.get("year")
         prediction_year = data.get("prediction_year")
-        prediction_month = data.get("prediction_year")
+        prediction_month = data.get("prediction_month")
 
     # Przykładowe dane do testowania
     else:
