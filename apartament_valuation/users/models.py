@@ -18,6 +18,7 @@ class User(AbstractUser):
         help_text='Specific permissions for this user.',
         related_query_name='custom_user_permissions',
     )
+    valuation_tokens = models.IntegerField(default=10)
 
 
 
