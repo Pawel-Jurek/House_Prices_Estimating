@@ -34,6 +34,7 @@ class ApartmentSearch(models.Model):
     suggested_price_min = models.FloatField()
     suggested_price_max = models.FloatField()
     search_date = models.DateTimeField(auto_now_add=True)
+    percent = models.FloatField(default=0)
 
     PREDICTION_MONTH_CHOICES = [
         (1, 'January'),

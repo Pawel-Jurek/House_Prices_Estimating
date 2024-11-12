@@ -69,7 +69,8 @@ def valuation(request):
                 suggested_price_min=lower_price,
                 suggested_price_max=upper_price,
                 prediction_year=prediction_year,
-                prediction_month=prediction_month
+                prediction_month=prediction_month,
+                percent = percent
             )
             user = User.objects.get(id=request.user.id)
             user.valuation_tokens -= 1
