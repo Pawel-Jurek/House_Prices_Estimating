@@ -36,14 +36,14 @@ const Account = () => {
 
 
   const handlePredict = async (e) => {
-    if(user.tokensLeft < 1) {
-      toast.error("You have no tokens left. Please buy more tokens.");
-      return;
+    e.preventDefault(); 
+  
+    if (user.tokensLeft === 0) {
+      toast.error("You have no tokens left. Please buy more tokens.", { position: 'top-left' });
+      return; 
     }
-
-    e.preventDefault();
+  
     const accessToken = localStorage.getItem('accessToken');
-    console.log(accessToken);
     const { city, district, square, rooms, floor, year, prediction_year, prediction_month } = form;
   
     if (!city) {
@@ -78,7 +78,7 @@ const Account = () => {
       toast.error("Prediction month must be between 1 and 12.", { position: 'top-left' });
       return;
     }
-
+  
     setErrorMessage("");
   
     try {
@@ -102,13 +102,14 @@ const Account = () => {
       );
   
       toast.success("Prediction successful!"); 
-      window.location.reload();
+      window.location.reload(); 
   
     } catch (error) {
       console.error('Error predicting price:', error);
-      toast.error("Error: " + error.response.data.detail);
+      toast.error("Error: " + error.response?.data?.detail || "An error occurred.");
     }
   };
+  
 
 
   const handleChange = (e) => {

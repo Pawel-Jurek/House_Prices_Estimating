@@ -56,8 +56,6 @@ export const AuthWrapper = () => {
             headers: { Authorization: `Bearer ${accessToken}` },
           });
 
-          console.log(data);
- 
           setUser({
             ...user,
             isAuthenticated: true,
