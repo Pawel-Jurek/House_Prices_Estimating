@@ -30,10 +30,12 @@ const Account = () => {
       },
     })
     .then(response => {
+      console.log(response.data);
       setHistory(response.data);
     })
   }, []);
 
+  const latestSearchDate = Math.max(...history.map(record => new Date(record.search_date).getTime()));
 
   const handlePredict = async (e) => {
     e.preventDefault(); 
@@ -335,97 +337,108 @@ const Account = () => {
     </form>
     </div>
     <div className='w-2/3 border-l p-8'>
-      {history.map(record => (
-                <div key={record.id} className="main-box mb-4 border border-gray-400 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
-                    <div className="data">
-                      <p className="font-semibold text-base leading-7 text-black">
-                        predictionID: <span className="text-orange-600 font-medium">{record.id}</span>
-                      </p>
-                      <p className="font-semibold text-base leading-7 text-black mt-4">
-                        search date: <span className="text-gray-400 font-medium">{new Date(record.search_date).toLocaleDateString()}</span>
-                      </p>
-                    </div>
-                    <div className="flex items-center mt-4 lg:mt-0">
-                      <p className="font-semibold text-base leading-7 text-black">
-                        prediction at: <span className="text-orange-600 font-medium">{record.prediction_month}.{record.prediction_year}</span>
-                      </p>
-                    </div>
+    {history.map(record => {
+        const isLatestRecord = new Date(record.search_date).getTime() === latestSearchDate;
 
-                  </div>
-                  <div className="w-full px-3 min-[400px]:px-6">
-                    <div className="flex flex-col lg:flex-row items-center py-6 border-b border-gray-200 gap-6 w-full">
-                      <div className="img-box max-lg:w-full">
-                        <img
-                          src='https://images1.apartments.com/i2/PS6lbmQwWTKR6h8L6SZLTdbvd_pNyfZMp-zeXtDcU5E/116/post-chicago-il-4br-3br.jpg?p=1'
-                          className="aspect-square w-full lg:max-w-[140px]"
-                        />
-                      </div>
-                      <div className="flex flex-row items-center w-full">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
-                          <div className="flex items-center">
-                            <div>
-                              <h2 className="font-semibold text-2xl leading-8 text-black mb-3">
-                                {record.city + ', ' + record.district}
-                              </h2>
-                              <div className='flex items-center'>
-                                <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
-                                  square: <span className="text-orange-600">{record.square_meters} m2</span>
-                                </p>
-                                <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
-                                  rooms: <span className="text-orange-600">{record.rooms}</span>
-                                </p>
-                                <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
-                                  floor: <span className="text-orange-600">{record.floor}</span>
-                                </p>
-                                <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
-                                  year: <span className="text-orange-600">{record.year}</span>
-                                </p>
-
-                              </div> 
-                              <div className="flex items-center">
-                                
-    
-                              </div>
-                            </div>
-                          </div>
-                          <div className="grid grid-cols-5">
-                            <div className="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3">
-                              <div className="flex gap-3 lg:block">
-                                <p className="font-medium text-sm leading-7 text-black">Price</p>
-                                <div className="rounded-lg" style={{ maxWidth: '300px' }}>
-                                  <div className="">
-                                  <div
-                                    className="w-full h-4 rounded-full"
-                                    style={{
-                                      background: 'linear-gradient(to right, green, yellow, red)', // Gradient kolorów
-                                    }}
-                                  >
-                                    <div
-                                      className="h-4 rounded-full"
-                                      style={{
-                                        width: `200px`, // Dynamiczna szerokość
-                                        backgroundColor: 'rgba(0,0,0,0.1)',
-                                      }}
-                                    />
-                                  </div>
-                                    <div className="mt-2 flex w-full justify-between">
-                                      <span className="text-sm text-gray-600">{record.suggested_price_min} zł</span>
-                                      <span className="text-sm text-gray-600">{record.suggested_price_max} zł</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>                      
-                            </div>
-                          
-                          </div>
+        return (
+          <div
+            key={record.id}
+            className={`main-box mb-4 border border-gray-400 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full ${isLatestRecord ? 'border-green-500 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]' : ''}`} // Dodajemy zielony border dla najnowszego rekordu
+          >
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
+              <div className="data">
+                <p className="font-semibold text-base leading-7 text-black">
+                  predictionID: <span className="text-orange-600 font-medium">{record.id}</span>
+                </p>
+                <p className="font-semibold text-base leading-7 text-black mt-4">
+                  search date: <span className="text-gray-400 font-medium">{new Date(record.search_date).toLocaleDateString()}</span>
+                </p>
+              </div>
+              <div className="flex items-center mt-4 lg:mt-0">
+                <p className="font-semibold text-base leading-7 text-black">
+                  prediction at: <span className="text-orange-600 font-medium">{record.prediction_month}.{record.prediction_year}</span>
+                </p>
+              </div>
+            </div>
+            <div className="w-full px-3 min-[400px]:px-6">
+              <div className="flex flex-col lg:flex-row items-center py-6 border-b border-gray-200 gap-6 w-full">
+                <div className="img-box max-lg:w-full">
+                  <img
+                    src='https://images1.apartments.com/i2/PS6lbmQwWTKR6h8L6SZLTdbvd_pNyfZMp-zeXtDcU5E/116/post-chicago-il-4br-3br.jpg?p=1'
+                    className="aspect-square w-full lg:max-w-[140px]"
+                  />
+                </div>
+                <div className="flex flex-row items-center w-full">
+                  <div className="grid grid-cols-2 lg:grid-cols-2 md:grid-cols-2 w-full">
+                    <div className="flex items-center">
+                      <div>
+                        <h2 className="font-semibold text-2xl leading-8 text-black mb-3">
+                          {record.city + ', ' + record.district}
+                        </h2>
+                        <div className='flex items-center'>
+                          <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
+                            square: <span className="text-orange-600">{record.square_meters}m<sup>2</sup></span>
+                          </p>
+                          <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
+                            rooms: <span className="text-orange-600">{record.rooms}</span>
+                          </p>
+                          <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
+                            floor: <span className="text-orange-600">{record.floor}</span>
+                          </p>
+                          <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
+                            year: <span className="text-orange-600">{record.year}</span>
+                          </p>
                         </div>
                       </div>
                     </div>
+                    <div className="grid grid-cols-5">
+                      <div className="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3">
+                        <div className="flex gap-3 lg:block">
+                          <p className="font-medium text-sm leading-7 text-black">Price</p>
+                          <div className="rounded-lg" style={{ maxWidth: '300px' }}>
+                            <div className="">
+                              <div
+                                className="w-full h-4 rounded-full"
+                                style={{
+                                  background: 'linear-gradient(to right, green, yellow, red)',
+                                }}
+                              >
+                                <div
+                                  className="h-4 rounded-full"
+                                  style={{
+                                    width: `200px`,
+                                    backgroundColor: 'rgba(0,0,0,0.1)',
+                                  }}
+                                />
+                              </div>
+                              <div className="mt-2 flex w-full justify-between">
+                                <span className="text-sm text-gray-600">{record.suggested_price_min} zł</span>
+                                <span className="text-sm text-gray-600">{record.suggested_price_max} zł</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>                      
+                      </div>           
+                    </div>
+                    <div className='flex mt-8'>
+                      <svg class="w-[42px] h-[42px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667"/>
+                      </svg>
+                      <p
+                        className={`mt-2 text-xl ${
+                          record.percent >= 0 ? "text-green-500" : "text-red-500"
+                        }`}
+                      >
+                        {record.percent}%
+                      </p>
+                    </div>
                   </div>
                 </div>
-              ))}
-
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
     </div>
   );
