@@ -46,7 +46,7 @@ class ApartmentSearchListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return ApartmentSearch.objects.filter(user=self.request.user)
+        return ApartmentSearch.objects.filter(user=self.request.user).order_by('-id')
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
