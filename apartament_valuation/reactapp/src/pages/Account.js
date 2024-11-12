@@ -36,41 +36,46 @@ const Account = () => {
 
 
   const handlePredict = async (e) => {
+    if(user.tokensLeft < 1) {
+      toast.error("You have no tokens left. Please buy more tokens.");
+      return;
+    }
+
     e.preventDefault();
     const accessToken = localStorage.getItem('accessToken');
     console.log(accessToken);
     const { city, district, square, rooms, floor, year, prediction_year, prediction_month } = form;
   
     if (!city) {
-      toast.error("Please select a city.");
+      toast.error("Please select a city.", { position: 'top-left' });
       return;
     }
     if (!district) {
-      toast.error("Please select a district.");
+      toast.error("Please select a district.", { position: 'top-left' });
       return;
     }
     if (square <= 0) {
-      toast.error("Square footage must be a positive number.");
+      toast.error("Square footage must be a positive number.", { position: 'top-left' });
       return;
     }
     if (rooms <= 0) {
-      toast.error("The number of rooms must be a positive number.");
+      toast.error("The number of rooms must be a positive number.", { position: 'top-left' });
       return;
     }
     if (floor < 0) {
-      toast.error("Floor number cannot be negative.");
+      toast.error("Floor number cannot be negative.", { position: 'top-left' });
       return;
     }
     if (year < 1900 || year > new Date().getFullYear()) {
-      toast.error("Year of construction must be between 1900 and the current year.");
+      toast.error("Year of construction must be between 1900 and the current year.", { position: 'top-left' });
       return;
     }
-    if (prediction_year < 1900 || prediction_year > 2070) {
-      toast.error("Prediction year must be between 1900 and 2070.");
+    if (prediction_year < new Date().getFullYear() || prediction_year > new Date().getFullYear() + 100) {
+      toast.error("Prediction year must be between 1900 and 2070.", { position: 'top-left' });
       return;
     }
     if (prediction_month < 1 || prediction_month > 12) {
-      toast.error("Prediction month must be between 1 and 12.");
+      toast.error("Prediction month must be between 1 and 12.", { position: 'top-left' });
       return;
     }
 
@@ -165,7 +170,11 @@ const Account = () => {
   return (
 
     <div className='flex'>
-    <a href='/' className='p-2'> HOME </a>
+      <a href='/' className='p-4'>
+        <svg class="w-[42px] h-[42px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"/>
+        </svg>
+      </a>
     <div className='w-1/3 min-h-screen pt-32'>
     <h1 className="text-3xl font-semibold text-center mb-4">Predict the price of your apartment</h1>
     <form className="p-4 max-w-md mx-auto space-y-8 py-8 bg-gray-200 rounded-lg">
@@ -326,7 +335,7 @@ const Account = () => {
     </div>
     <div className='w-2/3 border-l p-8'>
       {history.map(record => (
-                <div key={record.id} className="main-box mb-4 border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
+                <div key={record.id} className="main-box mb-4 border border-gray-400 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
                     <div className="data">
                       <p className="font-semibold text-base leading-7 text-black">

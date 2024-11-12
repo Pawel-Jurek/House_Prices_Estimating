@@ -6,7 +6,6 @@ import axios from 'axios';
 const Register = () => {
 
   const { register1 } = AuthData();
-
   const [formData, setFormData] = React.useState({
     username: '',
     email: '',
@@ -32,7 +31,7 @@ const Register = () => {
 
   return (
     <>
-      <section class="bg-white">
+      <section class="bg-white overflow-hidden">
     <div class="grid grid-cols-1 lg:grid-cols-2">
         <div class="flex items-center justify-center px-4 py-10 bg-white  min-h-screen sm:px-6 lg:px-8 sm:py-16 lg:py-8">
             <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">

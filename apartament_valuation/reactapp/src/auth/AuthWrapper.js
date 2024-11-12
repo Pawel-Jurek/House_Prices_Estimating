@@ -17,6 +17,7 @@ export const AuthWrapper = () => {
       email: "",
       userID: "",
       isAuthenticated: false,
+      tokensLeft: 0,
     });
 
     const login = async (username1, password1) => {
@@ -54,6 +55,8 @@ export const AuthWrapper = () => {
           const { data } = await axios.get(`http://localhost:8000/users/${userID}`, {
             headers: { Authorization: `Bearer ${accessToken}` },
           });
+
+          console.log(data);
  
           setUser({
             ...user,
@@ -61,6 +64,7 @@ export const AuthWrapper = () => {
             username: data.username,
             email: data.email,
             userID: data.id,
+            tokensLeft: data.valuation_tokens
           });
         
 
