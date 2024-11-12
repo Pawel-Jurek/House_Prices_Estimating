@@ -71,7 +71,6 @@ export const AuthWrapper = () => {
 
     const register1 = async (username1, email1, password1, password22) => {
         try {
-          
           const { data } = await axios.post("http://localhost:8000/users/register/", {
             username: username1,
             password: password1,

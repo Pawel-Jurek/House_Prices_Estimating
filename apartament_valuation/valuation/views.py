@@ -24,7 +24,7 @@ def get_home_data(request):
     return JsonResponse(data=data)
 
 # chwilowe wyłączenie tokenu do testów
-# @csrf_exempt
+@csrf_exempt
 @api_view(['POST'])
 def valuation(request):
     try:

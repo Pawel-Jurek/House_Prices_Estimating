@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Img from '../assets/bck.jpg';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { AuthData } from '../auth/AuthWrapper';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Home = () => {
 
@@ -19,6 +20,17 @@ const Home = () => {
       ref.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const [data, setData] = React.useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/valuation/get-home-data/').then((response) => {
+      setData(response.data);
+    });
+
+  }
+  , []);
+
 
   return (
     <>
@@ -112,7 +124,7 @@ const Home = () => {
                 <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div class="text-center">
                     <h2 className="text-3xl mb-8 font-bold leading-tight text-black sm:text-4xl lg:text-5xl">About</h2>
-                        <h4 class="text-xl font-medium text-gray-900">Numbers tell the hard works we’ve done in last 6 years</h4>
+                        <h4 class="text-xl font-medium text-gray-900">Our application in numbers</h4>
                     </div>
 
                     <div class="grid grid-cols-1 gap-6 px-6 mt-8 sm:px-0 lg:mt-16 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-12">
@@ -123,8 +135,8 @@ const Home = () => {
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
                                     <div class="ml-4">
-                                        <h4 class="text-4xl font-bold text-gray-900">6+</h4>
-                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Years in business</p>
+                                        <h4 class="text-4xl font-bold text-gray-900">{data.valuations_count}</h4>
+                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Valuation counts</p>
                                     </div>
                                 </div>
                             </div>
@@ -137,8 +149,8 @@ const Home = () => {
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                                     </svg>
                                     <div class="ml-4">
-                                        <h4 class="text-4xl font-bold text-gray-900">37+</h4>
-                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Team members</p>
+                                        <h4 class="text-4xl font-bold text-gray-900">{data.users_count}+</h4>
+                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Registered users</p>
                                     </div>
                                 </div>
                             </div>
@@ -151,8 +163,8 @@ const Home = () => {
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     <div class="ml-4">
-                                        <h4 class="text-4xl font-bold text-gray-900">3,274</h4>
-                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Projects delivered</p>
+                                        <h4 class="text-4xl font-bold text-gray-900">3 Cities</h4>
+                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Warsaw, Cracow and Poznan</p>
                                     </div>
                                 </div>
                             </div>
@@ -170,8 +182,8 @@ const Home = () => {
                                         />
                                     </svg>
                                     <div class="ml-4">
-                                        <h4 class="text-4xl font-bold text-gray-900">98%</h4>
-                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Customer success</p>
+                                        <h4 class="text-4xl font-bold text-gray-900">~95%</h4>
+                                        <p class="mt-1.5 text-lg font-medium leading-tight text-gray-500">Model effectiveness</p>
                                     </div>
                                 </div>
                             </div>
